@@ -5,9 +5,11 @@ import { QuizContext } from './context/quiz'
 import Question from './components/Question'
 import Welcome from './components/Welcome'
 import GameOver from './components/GameOver'
+import PickCategory from './components/PickCategory'
 
 // estilo
 import './App.css'
+
 
 
 function App() {
@@ -23,6 +25,7 @@ function App() {
     <div className='App'>
     <h1>Quiz One Piece</h1>
       {quizState.gameStage === "Start" && <Welcome />}
+      {quizState.gameStage === "Category" && <PickCategory />}
       {quizState.gameStage === "Playing" && <Question />}
       {quizState.gameStage === "End" && <GameOver />}
     </div>
