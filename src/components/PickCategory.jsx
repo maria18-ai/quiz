@@ -9,6 +9,9 @@ const PickCategory = () => {
 
     const [quizState, dispatch] = useContext(QuizContext);
 
+    function chooseCategoryAndReorderQuestions(category) {
+    dispatch({ type: "START_GAME", payload: category });
+
     return (
         <div id='category'>
             <h2>Escolha uma categoria</h2>
