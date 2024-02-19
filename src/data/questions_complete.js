@@ -11,7 +11,7 @@ const data = [
         {
             question: "Qual é o nome do chapéu que Luffy sempre usa?",
             options: ["Chapéu de Palha", "Chapéu de Pirata", "Chapéu do Sol", " Chapéu de Aventura"],
-            answer: " Chapéu de Palha",
+            answer: "Chapéu de Palha",
             tip: "Um símbolo de amizade e promessa entre Luffy e Shanks.",
         },
         {

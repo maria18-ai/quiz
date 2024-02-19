@@ -1,5 +1,5 @@
 import {createContext, useReducer} from 'react';
-import questions from '../data/questions';
+import questions from '../data/questions_complete';
 
 const STAGES = ["Start","Category","Playing","End"];
 
@@ -10,6 +10,7 @@ const initialState = {
     currentQuestion: 0,
     answerSelected: false,
     score: 0,
+    help: false
 };
 
 const quizReduce = (state, action) => {
@@ -22,9 +23,27 @@ const quizReduce = (state, action) => {
                 gameStage: STAGES[1],
             };
 
+
+        // escolhendo categorias 
+        case "START_GAME" :
+            let quizQuestions = null
+
+            state.questions.forEach((question) => {
+                if(question.category === action.payload) {
+                    quizQuestions = question.questions
+                }
+            });
+
+            return {
+                ...state,
+                questions: quizQuestions,
+                gameStage: STAGES[2],
+            }
+
+
         // embaralhando as perguntas
         case "REORDER_QUESTIONS":
-            const reorderedQuestions = questions.sort(() => {
+            const reorderedQuestions = state.questions.sort(() => {
                 return Math.random() - 0.5;
             });
             return {
@@ -32,25 +51,29 @@ const quizReduce = (state, action) => {
                 questions: reorderedQuestions,
             };
 
+
         // mudando as perguntas do jogo e criando a logica para o game over
         case "CHANGE_QUESTION":
             const nextQuestion = state.currentQuestion + 1;
             let endGame = false;
 
-            if(!questions[nextQuestion]) {
+            if(!state.questions[nextQuestion]) {
                 endGame = true;
             }
 
             return {
                 ...state,
                 currentQuestion: nextQuestion,
-                gameStage: endGame ? STAGES[2] : state.gameStage,
+                gameStage: endGame ? STAGES[3] : state.gameStage,
                 answerSelected: false,
+                help: false,
             }
+
 
         // retornando ao estagio inicial
         case "NEW_GAME":
             return initialState;
+
 
         // checando a resposta selecionada pelo usuario 
         case "CHECK_ANSWER": {
@@ -69,6 +92,13 @@ const quizReduce = (state, action) => {
             answerSelected: option,
             };
         }
+
+        case "SHOW_TIP" :
+            return {
+                ...state,
+                help: "tip"
+            }
+
 
         default: 
             return state;

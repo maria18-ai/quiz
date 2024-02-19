@@ -16,11 +16,6 @@ function App() {
 
   const [quizState, dispatch] = useContext(QuizContext);
 
-  useEffect(() => {
-    // embaralhando as perguntas 
-    dispatch({type: "REORDER_QUESTIONS"})
-  }, [])
-
   return (
     <div className='App'>
     <h1>Quiz One Piece</h1>
