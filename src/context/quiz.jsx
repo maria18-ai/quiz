@@ -10,7 +10,8 @@ const initialState = {
     currentQuestion: 0,
     answerSelected: false,
     score: 0,
-    help: false
+    help: false,
+    optionToHide: null
 };
 
 const quizReduce = (state, action) => {
@@ -93,11 +94,32 @@ const quizReduce = (state, action) => {
             };
         }
 
+        // mostrando dicas das perguntas 
         case "SHOW_TIP" :
             return {
                 ...state,
                 help: "tip"
             }
+
+        // removendo opções 
+        case "REMOVE_OPTION":
+            const questionWithoutOption = state.questions[state.currentQuestion];
+
+        let repeat = true;
+        let optionToHide;
+
+        questionWithoutOption.options.forEach((option) => {
+            if(option !== questionWithoutOption.answer && repeat) {
+                optionToHide = option;
+                repeat = false;
+            }
+        });
+
+        return {
+            ...state,
+            optionToHide,
+            help: true,
+        };
 
 
         default: 
