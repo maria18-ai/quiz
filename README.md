@@ -3,6 +3,7 @@
 Um projeto de Quiz com o tema do anime One Piece. 
 O quiz consiste em um jogo de várias perguntas e respostas com as seguintes categorias: Fáceis, Médio e Difíceis.
 
+
 ## 🖱 Ferramentas necessárias para clonagem
 
 ```
@@ -17,9 +18,11 @@ Para clonar o repositorio, basta copiar a URL no botão code do github:
 
 
 
+
 Não se esqueça de instalar todas as dependencias do projeto, basta usar o comando: 
 
 ![install](https://github.com/maria18-ai/quiz/assets/131560480/6caf7ba0-7418-47d6-9891-44273e937342)
+
 
 
 
@@ -27,6 +30,9 @@ Após todas as dependencias estarem instaladas, para rodar a aplicação em sua 
 
 ![npmrun](https://github.com/maria18-ai/cardapio-online/assets/131560480/6a7b4c38-8afc-44d2-8cef-cbbc2cad598b)
 
+
+
+Após clonar o repositório, para executar a aplicação em sua máquina, basta abri-la utilizando o Live Server. Sinta-se à vontade para explorar e aprimorar o código conforme desejar. 😉
 
 
 ## 👩‍💻 Como Utilizar
